@@ -15,9 +15,11 @@ export default StyleSheet.create({
         marginVertical: 10
     },
     title: {
-        fontSize: 28,
+        fontSize: 50,
         alignSelf: 'center',
+        textAlign: 'center',
         marginTop: '20%',
-        color: '#FFF'
+        color: '#FFF',
+        fontFamily: 'Pokemon'
     }
 })

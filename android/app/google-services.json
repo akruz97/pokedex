@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "638486815985",
+    "firebase_url": "https://pokedex-29ab0-default-rtdb.firebaseio.com",
     "project_id": "pokedex-29ab0",
     "storage_bucket": "pokedex-29ab0.appspot.com"
   },

@@ -6,9 +6,11 @@ export default StyleSheet.create({
        
     },
     title: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        marginVertical: 15
+        fontSize: 28,
+        color: '#000',
+        //fontWeight: 'bold',
+        marginVertical: 28,
+        fontFamily: 'print_bold_tt'
     },
     back: {
         marginRight: 10

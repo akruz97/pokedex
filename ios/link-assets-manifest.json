@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Pokemon GB.ttf",
+      "sha1": "3d4b93796acf4934f1bdcf08414d0d9238c4bae6"
+    },
+    {
+      "path": "src/assets/fonts/POS_____.TTF",
+      "sha1": "564cc86080b10697417deee3942554adb29ff459"
+    }
+  ]
+}

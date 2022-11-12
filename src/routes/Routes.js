@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/Home/Home';
 import Login from '../screens/Login/Login';
@@ -10,6 +10,8 @@ import Profile from '../screens/Profile';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import Pokemons from '../screens/Pokemons';
 import FormTeam from '../screens/FormTeam';
+import { UserContext } from '../context/UserContext';
+import { removeValue, storeData } from '../storage/storage';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,19 +47,8 @@ const TabMenu = () => {
 
 const Routes = () => {
 
-    const [isAuthenticated, setAuthenticated] = useState(false);
-
-    const onAuthStateChanged = (user) => {
-        if (user) {
-            console.log('User : ', JSON.stringify(user, null, 4));
-            setAuthenticated(true);
-        }
-      }
-
-    useEffect(() => {
-        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        return subscriber; // unsubscribe on unmount
-      }, []);
+    const user = useContext(UserContext);
+    const { isAuthenticated, setAuthenticated, loading } = user;
     
 
   return (

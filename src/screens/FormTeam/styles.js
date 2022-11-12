@@ -40,8 +40,9 @@ export default StyleSheet.create({
         fontSize: 16,
       },
       selectedTextStyle: {
-        fontSize: 16,
-        textTransform: 'capitalize'
+        fontSize: 20,
+        textTransform: 'capitalize',
+        fontFamily: 'print_bold_tt'
       },
       iconStyle: {
         width: 20,
@@ -52,6 +53,12 @@ export default StyleSheet.create({
         fontSize: 16,
       },
       itemTextStyle: {
-        textTransform: 'capitalize'
+        fontSize: 22,
+        textTransform: 'capitalize',
+        fontFamily: 'print_bold_tt'
+      },
+      inputStyle : {
+        fontSize: 22,
+        fontFamily: 'print_bold_tt'
       }
 })

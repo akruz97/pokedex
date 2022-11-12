@@ -1,7 +1,7 @@
 import { FlatList, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './styles'
-import { getRegions } from '../../../services';
+import { getRegions, reportCrash } from '../../../services';
 import RegionItem from '../RegionItem/RegionItem';
 
 export default function RegionList() {
@@ -13,7 +13,9 @@ export default function RegionList() {
         .then(data => {
             const {results } = data;
             setRegions(results);
-        })
+        }).catch(error => {
+            reportCrash(error);
+        });
     }, []);
 
     const renderItem = ({ item }) => (

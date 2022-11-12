@@ -12,18 +12,22 @@ export default StyleSheet.create({
         overflow: 'hidden'
     },
     text: {
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 24,
+        fontFamily: 'print_bold_tt',
         textTransform: 'capitalize',
         color: '#fff'
     },
     type: {
         textTransform: 'capitalize',
         color: '#fff',
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        fontSize: 18,
+        fontFamily: 'print_bold_tt'
     },
     description: {
-        color: '#fff'
+        color: '#fff',
+        fontSize: 20,
+        fontFamily: 'print_bold_tt',
     },
     pressable: {
 

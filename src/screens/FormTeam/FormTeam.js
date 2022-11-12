@@ -5,7 +5,7 @@ import Header from '../../components/Header'
 import { Button, TextInput } from '@react-native-material/core'
 import PokemonInfo from '../Pokemons/PokemonInfo'
 import { Overlay } from '@rneui/base'
-import { setData, pushData, getTypes } from '../../services'
+import { setData, pushData, getTypes, reportCrash } from '../../services'
 import auth from '@react-native-firebase/auth'
 import LoadingView from '../../components/LoadingView'
 import { useNavigation } from '@react-navigation/native'
@@ -37,13 +37,11 @@ const FormTeam = ({ route }) => {
     useEffect(() => {
 
         if(editMode && route.params?.team){
-            console.log('ejecut ...');
             const { teamName, description, number = "", type, items: itemsPokemon, region } = team || {};
             setTeamName(teamName);
             setDescription(description);
             setNumber(String(number));
             setValue(type)
-            console.log('size : ', itemsPokemon.length);
             setPokemons(itemsPokemon); 
             setRegion(region);
             getTypesPokemon();
@@ -61,7 +59,7 @@ const FormTeam = ({ route }) => {
             const { results = [] } = data;
             let typesMapped = results.map(item => ({ label: item.name, value: item.name }))
             setTypes(typesMapped);
-        })
+        }).catch(error => reportCrash(error));
     }
 
     const onPressSave = async () => {
@@ -155,7 +153,7 @@ const FormTeam = ({ route }) => {
             <TextInput value={teamName} 
                         onChangeText={onChangeTeamName} 
                         placeholder='Nombre del equipo' 
-                        
+                        inputStyle={styles.inputStyle}
                         inputContainerStyle={styles.inputContainerStyle} />
             <View style={{
                 flexDirection: 'row',
@@ -165,6 +163,7 @@ const FormTeam = ({ route }) => {
                             onChangeText={onChangeNumber}
                             keyboardType='number-pad'
                             placeholder='Número' 
+                            inputStyle={styles.inputStyle}
                             inputContainerStyle={styles.inputContainerStyle} 
                             style={{ flex: 1 }} />
                 <View style={{ flex: 1 }}>
@@ -191,7 +190,8 @@ const FormTeam = ({ route }) => {
                         />
                         </View>
             </View>
-            <TextInput value={description} onChangeText={onChangeDescription} placeholder='Descripción' inputContainerStyle={styles.inputContainerStyle} />
+            <TextInput value={description} inputStyle={styles.inputStyle}
+             onChangeText={onChangeDescription} placeholder='Descripción' inputContainerStyle={styles.inputContainerStyle} />
             
             {
                 pokemons.length < 6 && editMode ? (
@@ -223,9 +223,6 @@ const FormTeam = ({ route }) => {
                     disabled={pokemons.length < 3 || pokemons.length > 6}
                     />
        </View>
-
-      
-
      
     </View>
   )

@@ -1,5 +1,6 @@
 import database from '@react-native-firebase/database'
 import auth from '@react-native-firebase/auth'
+import { reportCrash } from './crash';
 
 
 export const pushData = async (ref, data) => new Promise((resolve, reject) => {
@@ -7,7 +8,10 @@ export const pushData = async (ref, data) => new Promise((resolve, reject) => {
     .ref(ref)
     .push(data)
     .then(() => resolve("OK"))
-    .catch((error) => reject(error.message));
+    .catch((error) => {
+        reject(error.message);
+        reportCrash(error);
+    });
 });
 
 export const setData = async (ref, data) => new Promise((resolve, reject) => {
@@ -15,7 +19,10 @@ export const setData = async (ref, data) => new Promise((resolve, reject) => {
     .ref(ref)
     .set(data)
     .then(() => resolve("OK"))
-    .catch((error) => reject(error.message));
+    .catch((error) => {
+        reject(error.message);
+        reportCrash(error);
+    });
 });
 
 export const getCollection = async (ref, callback) => new Promise((resolve, reject) => {

@@ -7,10 +7,14 @@ export default StyleSheet.create({
         paddingHorizontal: '4%'
     },
     textLeft: {
-        textAlign: 'left'
+        textAlign: 'left',
+        fontSize: 20,
+        fontFamily: 'print_bold_tt'
     },
     textRight: {
-        textAlign: 'right'
+        textAlign: 'right',
+        fontSize: 20,
+        fontFamily: 'print_bold_tt'
     },
     button: {
         height: 50, 

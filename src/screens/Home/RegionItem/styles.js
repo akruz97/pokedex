@@ -8,10 +8,10 @@ export default StyleSheet.create({
         overflow: 'hidden'
     },
     text: {
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 24,
         textTransform: 'capitalize',
-        color: '#fff'
+        color: '#fff',
+        fontFamily: 'print_bold_tt'
     },
     pressable: {
       height: 60,

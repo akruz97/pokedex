@@ -8,8 +8,8 @@ export default StyleSheet.create({
         overflow: 'hidden'
     },
     text: {
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 28,
+        fontFamily: 'print_bold_tt',
         textTransform: 'capitalize',
         marginHorizontal: 10
     },

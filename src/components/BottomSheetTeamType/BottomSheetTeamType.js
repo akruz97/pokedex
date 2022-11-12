@@ -7,7 +7,6 @@ const BottomSheetTeamType = ({ options = [] }) => {
     const bottomSheetRef = useRef(null);
 
     const handleSheetChanges = useCallback((index) => {
-        console.log('handleSheetChanges', index);
       }, []);
 
   return (

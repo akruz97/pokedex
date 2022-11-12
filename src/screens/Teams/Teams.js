@@ -34,7 +34,6 @@ const Teams = () => {
             const id = element.key;
             const val = element.val();
             let obj = { id: id, ...val }
-            console.log('obj', JSON.stringify(obj, null, 4));
             result.push(obj);
         });
         setTeams(result);

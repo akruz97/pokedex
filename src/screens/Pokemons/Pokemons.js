@@ -2,9 +2,9 @@ import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './styles';
 import Header from '../../components/Header';
-import { getPokemonsByPokedex, getRegionById } from '../../services';
+import { getPokemonsByPokedex, getRegionById, reportCrash } from '../../services';
 import PokemonList from './PokemonList/PokemonList';
-import { Button } from '@react-native-material/core';
+import { ActivityIndicator, Button } from '@react-native-material/core';
 import { useNavigation } from '@react-navigation/native';
 
 const Pokemons = ({ route }) => {
@@ -13,14 +13,15 @@ const Pokemons = ({ route }) => {
     const editMode = route.params?.editMode || false;
     const items = route.params?.items || [];
     const team = route.params?.team || [];
-    console.log('region : ', JSON.stringify(region, null, 4));
     const [pokemons, setPokemons] = useState([]);
     const [title, setTitle] = useState("");
     const [pokemonsSelected, setPokemonsSelected] = useState([]); 
+    const [loading , setLoading] = useState(false);
     const navigation = useNavigation();
 
     useEffect(() => {
         if (region){
+           setLoading(true);
             const { name, url } = region;
             setTitle(name);
             getRegionById(url).then(res => res.data)
@@ -29,16 +30,18 @@ const Pokemons = ({ route }) => {
                 if ( pokedexes.length > 0){
                     const urlPokedex = pokedexes[0].url;
                     getPokemons(urlPokedex)
+                    
                 }
-            })
+            }).catch((error) => {
+                setLoading(false);
+                reportCrash(error);
+            });
         }
     }, [region]);
 
 
     useEffect(() => {
         if(editMode){
-            console.log('items :', items.length);
-            console.log('edit Mode');
             setPokemonsSelected(items);
         }
     }, [editMode]);
@@ -49,14 +52,15 @@ const Pokemons = ({ route }) => {
         .then(data => {
             const { pokemon_entries } = data;
             setPokemons(pokemon_entries);
+            setLoading(false);
         }).catch(error => {
-            console.log(error.message);
+            setLoading(false);
+            reportCrash(error);
         });
     }
 
     const onPressCreateTeam = () => {
         if(editMode){
-            console.log('items: ', pokemonsSelected.length);
             team.items = pokemonsSelected
             navigation.navigate('FormTeam', {
                     editMode,
@@ -85,9 +89,16 @@ const Pokemons = ({ route }) => {
        <Text style={styles.textRight}>{pokemonsSelected.length} seleccionados</Text>
 
         <View style={{ flex: 1 }}>
-            <PokemonList data={pokemons} 
-            pokemonsSelected={pokemonsSelected} 
-            onChange={setPokemonsSelected} />
+           {
+                loading ? (
+                    <View style={{ flex: 1, justifyContent: 'center' }}>
+                        <ActivityIndicator size={52} />
+                    </View>
+                ) : <PokemonList data={pokemons} 
+                    pokemonsSelected={pokemonsSelected} 
+                    onChange={setPokemonsSelected} />
+                
+           }
         </View>
        <View style={{ height: 60 }}>
             <Button title={`${editMode ? 'Terminar selección' : 'Crear equipo'}`} 
