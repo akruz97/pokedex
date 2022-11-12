@@ -6,9 +6,7 @@ import PokemonItem from '../PokemonItem';
 export default function PokemonList({ data, pokemonsSelected, onChange }) {
 
     const renderItem = ({ item }) => {
-        return <PokemonItem item={item} 
-        pokemonsSelected={pokemonsSelected} 
-        onChangePokemon={onChange} />
+        return <PokemonItem item={item} pokemonsSelected={pokemonsSelected} onChangePokemon={onChange} />
     }
 
   return (

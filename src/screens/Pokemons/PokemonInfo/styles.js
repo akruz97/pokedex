@@ -31,5 +31,21 @@ export default StyleSheet.create({
     badge: {
         color: '#000',
         fontSize: 12  
+    },
+    delete: {
+        position: 'absolute',
+        bottom: 0,
+        right: 0
+    },
+    containerImage: {
+        width: '50%',
+        height: '100%'
+    },
+    containerInfo: {
+        height: '70%',
+        flexDirection: 'row'
+    },
+    mv8: {
+        marginVertical: 8
     }
 });

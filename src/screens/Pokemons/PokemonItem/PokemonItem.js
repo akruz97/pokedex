@@ -45,7 +45,7 @@ const PokemonItem = ({ item, pokemonsSelected, onChangePokemon }) => {
         style={styles.container}>
         <Pressable style={styles.pressable} onPress={onChange} >
             <View style={styles.containerInfo}>
-                <Image source={{ uri: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ pokemonId +'.png', cache: 'force-cache' }} 
+                <Image source={{ uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`, cache: 'force-cache' }} 
                         style={styles.image}/>
                 <Text style={styles.text} >{name}</Text>
             </View>

@@ -124,7 +124,7 @@ const Teams = () => {
                     item.pokemons.map(pokemon => {
                       return (
                         <Image key={pokemon.pokemonId} 
-                              source={{ uri: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ pokemon.pokemonId +'.png', cache: 'force-cache' }} 
+                              source={{ uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.pokemonId}.png`, cache: 'force-cache' }} 
                               style={styles.image}/>
                       )
                     })
@@ -145,7 +145,7 @@ const Teams = () => {
       <Header title={'Equipos'} />
       {
         !teams.length ? (
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <View style={styles.containerListEmpty}>
             <Text style={styles.listEmpty}>
               No hay equipos creados
             </Text>

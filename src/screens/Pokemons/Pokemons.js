@@ -74,7 +74,7 @@ const Pokemons = ({ route }) => {
 
     const onPressCreateTeam = () => {
         if(editMode){
-            team.items = pokemonsSelected
+            team.items = pokemonsSelected;
             navigation.navigate('FormTeam', {
                     editMode,
                     items: pokemonsSelected,
@@ -99,38 +99,29 @@ const Pokemons = ({ route }) => {
   return (
     <View style={styles.container}>
         <Header title={'Región '+ capitalize(title)} showBack={true} />
-
         <Text style={styles.textLeft} >Seleccione mínimo 3 o máximo 6 pokemons para crear un equipo</Text>
-       <View style={{
-        flexDirection: 'row',
-        alignItems: 'center'
-       }}>
-        <TextInput value={search} 
-        onChangeText={onChangeSearch} 
-        inputContainerStyle={{
-            backgroundColor: '#fff'
-        }}
-        inputStyle={{
-            paddingBottom: 0
-        }}
-        placeholder='Busca aquí tu pokemon'
-        style={{ flex: 1 }} />
-       <Text style={styles.textRight}>{pokemonsSelected.length} seleccionados</Text>
-       </View>
+        <View style={styles.containerInput}>
+            <TextInput  value={search} onChangeText={onChangeSearch} 
+                        inputContainerStyle={styles.inputContainerStyle}
+                        inputStyle={styles.inputStyle}
+                        placeholder='Busca aquí tu pokemon'
+                    style={styles.flex} />
+            <Text style={styles.textRight}>{pokemonsSelected.length} seleccionados</Text>
+        </View>
 
-        <View style={{ flex: 1 }}>
+        <View style={styles.flex}>
            {
                 loading ? (
-                    <View style={{ flex: 1, justifyContent: 'center' }}>
+                    <View style={[styles.flex, styles.justifyCenter]}>
                         <ActivityIndicator size={52} />
                     </View>
-                ) : <PokemonList data={pokemonsFiltered} 
-                    pokemonsSelected={pokemonsSelected} 
-                    onChange={setPokemonsSelected} />
+                ) : <PokemonList    data={pokemonsFiltered} 
+                                    pokemonsSelected={pokemonsSelected} 
+                                    onChange={setPokemonsSelected} />
                 
            }
         </View>
-       <View style={{ height: 60 }}>
+       <View style={styles.containerButton}>
             <Button title={`${editMode ? 'Terminar selección' : 'Crear equipo'}`} 
                     style={styles.button} 
                     onPress={onPressCreateTeam}

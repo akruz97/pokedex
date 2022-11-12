@@ -6,6 +6,12 @@ export default StyleSheet.create({
         backgroundColor: '#FFF',
         paddingHorizontal: '4%'
     },
+    flex: {
+        flex: 1
+    },
+    justifyCenter: {
+        justifyContent: 'center'
+    },
     textLeft: {
         textAlign: 'left',
         fontSize: 20,
@@ -19,5 +25,18 @@ export default StyleSheet.create({
     button: {
         height: 50, 
         justifyContent: 'center'
+    },
+    containerButton : {
+        height: 60
+    },
+    inputContainerStyle: {
+        backgroundColor: '#fff'
+    },
+    inputStyle: {
+        paddingBottom: 0
+    },
+    containerInput : {
+        flexDirection: 'row',
+        alignItems: 'center'
     }
 })

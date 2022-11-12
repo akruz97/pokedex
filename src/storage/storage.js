@@ -7,7 +7,6 @@ export const storeData = async (key, value) => {
       await AsyncStorage.setItem(key, jsonValue);
     } catch (e) {
       reportCrash(e);
-      // saving error
     }
   }
 
@@ -17,7 +16,6 @@ export const storeData = async (key, value) => {
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch(e) {
       reportCrash(e);
-      // error reading value
     }
   }
 

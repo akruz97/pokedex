@@ -134,7 +134,6 @@ const FormTeam = ({ route }) => {
 
     const onChangeTeamName = (text) => setTeamName(text);
     const onChangeNumber = (text) => setNumber(text);
-    const onChangeType = (text) => setType(text);
     const onChangeDescription = (text) => setDescription(text); 
 
     const renderLabel = () => {
