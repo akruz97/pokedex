@@ -1,3 +1,4 @@
+
 export default regionColors = {
     default: "#A8A878",
     kanto: "#C03028",

@@ -7,11 +7,17 @@ export default StyleSheet.create({
     },
     containerForm: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         marginHorizontal: 50
     },
     inputContainer: {
         marginHorizontal: 15,
         marginVertical: 10
+    },
+    title: {
+        fontSize: 28,
+        alignSelf: 'center',
+        marginTop: '20%',
+        color: '#FFF'
     }
 })

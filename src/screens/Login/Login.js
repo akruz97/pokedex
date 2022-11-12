@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, ImageBackground } from 'react-native'
 import React from 'react'
 import styles from './styles'
 import { TextInput } from "@react-native-material/core";
@@ -27,16 +27,18 @@ const Login = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ImageBackground source={require('./../../assets/img/launcher.png')}  style={styles.container}>
       <View style={styles.containerForm}>
+        <Text style={styles.title} >{`Pokedex Challenge`}</Text>
+        
         <GoogleSigninButton 
-          style={{ width: '100%', height: 55 }}
+          style={{ width: '100%', height: 55, marginVertical: '10%' }}
           size={GoogleSigninButton.Size.Wide}
           color={GoogleSigninButton.Color.Dark}
           onPress={onGoogleButtonPress}
         />
       </View>
-    </View>
+    </ImageBackground>
   )
 }
 
