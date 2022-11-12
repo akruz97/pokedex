@@ -42,12 +42,15 @@ const Login = () => {
       <View style={styles.containerForm}>
         <Text style={styles.title} >{`Pokedex App`}</Text>
         
+        <View>
+          <Text style={styles.text}>{`Arma tu equipo ganador!. Selecciona los mejores pokemon de la región`}</Text>
         <GoogleSigninButton 
           style={{ width: '100%', height: 55, marginVertical: '10%' }}
           size={GoogleSigninButton.Size.Wide}
           color={GoogleSigninButton.Color.Dark}
           onPress={() => onGoogleButtonPress()}
         />
+        </View>
       </View>
     </ImageBackground>
   )

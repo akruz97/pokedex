@@ -4,7 +4,7 @@ import styles from './styles';
 import Header from '../../components/Header';
 import { getPokemonsByPokedex, getRegionById, reportCrash } from '../../services';
 import PokemonList from './PokemonList/PokemonList';
-import { ActivityIndicator, Button } from '@react-native-material/core';
+import { ActivityIndicator, Button, TextInput } from '@react-native-material/core';
 import { useNavigation } from '@react-navigation/native';
 
 const Pokemons = ({ route }) => {
@@ -14,9 +14,11 @@ const Pokemons = ({ route }) => {
     const items = route.params?.items || [];
     const team = route.params?.team || [];
     const [pokemons, setPokemons] = useState([]);
+    const [pokemonsFiltered, setPokemonsFiltered] = useState([]);
     const [title, setTitle] = useState("");
     const [pokemonsSelected, setPokemonsSelected] = useState([]); 
     const [loading , setLoading] = useState(false);
+    const [search, setSearch] = useState("");
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -38,6 +40,17 @@ const Pokemons = ({ route }) => {
             });
         }
     }, [region]);
+
+    useEffect(() => {
+        let pokemonsFiltered = pokemons;
+
+        if(search.length > 0){
+           pokemonsFiltered = pokemonsFiltered.filter((item) => 
+           String(item.pokemon_species.name).toLowerCase().includes(search.toLowerCase()))
+        }
+
+        setPokemonsFiltered(pokemonsFiltered)
+    }, [search, pokemons])
 
 
     useEffect(() => {
@@ -81,12 +94,29 @@ const Pokemons = ({ route }) => {
         return string.length ? string[0].toUpperCase() + string.slice(1) : "";
     }
 
+    const onChangeSearch = (text) => setSearch(text);
+
   return (
     <View style={styles.container}>
         <Header title={'Región '+ capitalize(title)} showBack={true} />
 
         <Text style={styles.textLeft} >Seleccione mínimo 3 o máximo 6 pokemons para crear un equipo</Text>
+       <View style={{
+        flexDirection: 'row',
+        alignItems: 'center'
+       }}>
+        <TextInput value={search} 
+        onChangeText={onChangeSearch} 
+        inputContainerStyle={{
+            backgroundColor: '#fff'
+        }}
+        inputStyle={{
+            paddingBottom: 0
+        }}
+        placeholder='Busca aquí tu pokemon'
+        style={{ flex: 1 }} />
        <Text style={styles.textRight}>{pokemonsSelected.length} seleccionados</Text>
+       </View>
 
         <View style={{ flex: 1 }}>
            {
@@ -94,7 +124,7 @@ const Pokemons = ({ route }) => {
                     <View style={{ flex: 1, justifyContent: 'center' }}>
                         <ActivityIndicator size={52} />
                     </View>
-                ) : <PokemonList data={pokemons} 
+                ) : <PokemonList data={pokemonsFiltered} 
                     pokemonsSelected={pokemonsSelected} 
                     onChange={setPokemonsSelected} />
                 

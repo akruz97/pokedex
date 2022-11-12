@@ -1,8 +1,8 @@
-import { View, Text, Image, Alert } from 'react-native'
+import { View, Text, Image, Alert, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './styles'
 import { FlatList } from 'react-native-gesture-handler'
-import { Button, Surface, Pressable } from '@react-native-material/core'
+import { Button, Surface, Pressable, FAB } from '@react-native-material/core'
 import { getCollection } from '../../services'
 import auth from '@react-native-firebase/auth'
 import Header from '../../components/Header'
@@ -138,15 +138,30 @@ const Teams = () => {
     </Surface>
   )
 
+
   return (
     <View style={styles.container}>
+       
       <Header title={'Equipos'} />
-      <FlatList 
+      {
+        !teams.length ? (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={styles.listEmpty}>
+              No hay equipos creados
+            </Text>
+
+          </View>
+        ) :   <FlatList 
         data={teams}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
       
       />
+      }
+      <TouchableOpacity style={styles.floatButton}  onPress={() => navigation.navigate('Locations')} >
+        <MaterialCommunityIcons name='plus' size={26} color="#fff" />
+      </TouchableOpacity>
+
     </View>
   )
 }

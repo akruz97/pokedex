@@ -49,5 +49,21 @@ export default StyleSheet.create({
     image: {
         height: 50,
         width: 50
+    },
+    listEmpty: {
+        fontSize: 28,
+        fontFamily: 'print_bold_tt'
+    },
+    floatButton : {
+        width: 60,
+        height: 60,
+        borderRadius: 60/2,
+        backgroundColor: 'red',
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden'
     }
 })

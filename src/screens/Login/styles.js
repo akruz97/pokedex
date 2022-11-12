@@ -21,5 +21,11 @@ export default StyleSheet.create({
         marginTop: '20%',
         color: '#FFF',
         fontFamily: 'Pokemon'
+    },
+    text: {
+        fontSize: 24,
+        color: '#fff',
+        fontFamily: 'print_bold_tt',
+        textAlign: 'center'
     }
 })

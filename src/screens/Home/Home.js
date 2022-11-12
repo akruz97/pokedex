@@ -8,6 +8,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
         <Header title={'Regiones pokemon'} />
+        <Text style={styles.title} >Seleccione una región y arma tu equipo!</Text>
         <RegionList />
     </View>
   )

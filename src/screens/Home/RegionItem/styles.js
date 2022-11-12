@@ -15,7 +15,9 @@ export default StyleSheet.create({
     },
     pressable: {
       height: 60,
-      justifyContent: 'center',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       borderRadius: 20,
       overflow: 'hidden',
       paddingHorizontal: 10
