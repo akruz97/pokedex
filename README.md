@@ -15,6 +15,16 @@ Pokedex
 Setting up the development environment React Native CLI
 
 [Setting up the development environment](https://reactnative.dev/docs/environment-setup)
+
+## Features
+
+- Login with Google
+- Show pokemon regions
+- Create teams by region
+- Select minimum 3 and maximum 6 pokemons per team
+- Updating teams, removing or adding pokemons
+- Delete teams
+
 ## Get Starting
 
 * Clone this repo
@@ -36,17 +46,4 @@ Setting up the development environment React Native CLI
 ```bash
   npx react-native run-android
 ```
-## Demo
-
-Insert gif or link to demo
-
-
-## Features
-
-- Login with Google
-- Show pokemon regions
-- Create teams by region
-- Select minimum 3 and maximum 6 pokemons per team
-- Updating teams, removing or adding pokemons
-- Delete teams
 
